@@ -3,15 +3,16 @@ import React from "react";
 type Lesson = { id: string; title: string; level: string; durationMinutes: number; progress: number };
 
 export function LessonApp({ apiBaseUrl }: { apiBaseUrl?: string }) {
+  const versionedApiBaseUrl = apiBaseUrl?.includes("/api/v") ? apiBaseUrl : `${apiBaseUrl ?? ""}/api`;
   const [lessons, setLessons] = React.useState<Lesson[]>([]);
   const [error, setError] = React.useState("");
 
   React.useEffect(() => {
-    fetch(`${apiBaseUrl ?? ""}/api/lessons`)
+    fetch(`${versionedApiBaseUrl}/lessons`)
       .then((response) => response.ok ? response.json() : Promise.reject(new Error(String(response.status))))
       .then((data: { lessons: Lesson[] }) => setLessons(data.lessons))
       .catch((reason: Error) => setError(`Lessons are unavailable (${reason.message}).`));
-  }, [apiBaseUrl]);
+  }, [versionedApiBaseUrl]);
 
   return <section className="lesson-mfe">
     <div className="lesson-heading"><div><span>RECOMMENDED</span><h2>Keep learning</h2><p>Short, focused lessons picked for your English journey.</p></div><strong>{lessons.length} videos</strong></div>
