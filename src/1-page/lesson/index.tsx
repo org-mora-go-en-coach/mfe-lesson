@@ -1,8 +1,8 @@
 import React from "react";
+import type { Lesson } from "../../4-entity/lesson";
+import type { LessonAppProps } from "./type";
 
-type Lesson = { id: string; title: string; level: string; durationMinutes: number; progress: number };
-
-export function LessonApp({ apiBaseUrl }: { apiBaseUrl?: string }) {
+export function LessonApp({ apiBaseUrl }: LessonAppProps) {
   const versionedApiBaseUrl = apiBaseUrl?.includes("/api/v") ? apiBaseUrl : `${apiBaseUrl ?? ""}/api`;
   const [lessons, setLessons] = React.useState<Lesson[]>([]);
   const [error, setError] = React.useState("");
