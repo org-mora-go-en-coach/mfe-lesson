@@ -14,11 +14,11 @@ export function LessonApp({ apiBaseUrl }: { apiBaseUrl?: string }) {
   }, [apiBaseUrl]);
 
   return <section className="lesson-mfe">
-    <div className="lesson-heading"><div><span>CURRICULUM</span><h2>Your lessons</h2></div><strong>{lessons.length} modules</strong></div>
+    <div className="lesson-heading"><div><span>RECOMMENDED</span><h2>Keep learning</h2><p>Short, focused lessons picked for your English journey.</p></div><strong>{lessons.length} videos</strong></div>
     {error && <p className="lesson-error">{error}</p>}
     <div className="lesson-grid">{lessons.map((lesson, index) => <article key={lesson.id}>
-      <div className="lesson-number">0{index + 1}</div><span>{lesson.level} · {lesson.durationMinutes} MIN</span><h3>{lesson.title}</h3>
-      <div className="lesson-progress"><i style={{ width: `${lesson.progress}%` }} /></div><small>{lesson.progress}% complete</small>
+      <div className="lesson-thumbnail"><span className="lesson-glyph">{["👋","💬","🎯"][index%3]}</span><span className="lesson-duration">{lesson.durationMinutes}:00</span><div className="lesson-progress"><i style={{ width: `${lesson.progress}%` }} /></div></div>
+      <div className="lesson-meta"><div className="lesson-channel">{lesson.level}</div><div><h3>{lesson.title}</h3><p>Mora Go English</p><small>{lesson.progress}% complete · Lesson {index+1}</small></div></div>
     </article>)}</div>
   </section>;
 }
