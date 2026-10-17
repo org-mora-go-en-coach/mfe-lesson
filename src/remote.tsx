@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { LessonApp } from "./LessonApp";
+import { LessonApp } from "./1-page/lesson";
 import "./style.css";
 
 function ensureStylesheet() {
