@@ -1,12 +1,11 @@
 import { expect, test } from "@playwright/test";
 
-test("3. 영어 코치에게 연습 주제를 보내고 답변을 표시한다", async ({ page }) => {
+test("3. AI 채팅 인터페이스를 노출하지 않는다", async ({ page }) => {
   await page.route("**/api/v1.0.2/lessons", route => route.fulfill({ json: { lessons: [] } }));
   await page.goto("/");
 
-  await page.getByLabel("Message your English coach").fill("Practice ordering coffee");
-  await page.getByRole("button", { name: "Send message" }).click();
-
-  await expect(page.getByText("Practice ordering coffee", { exact: true })).toBeVisible();
-  await expect(page.getByText(/Let's practice “Practice ordering coffee” together/)).toBeVisible();
+  await expect(page.getByLabel("Message your English coach")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Send message" })).toHaveCount(0);
+  await expect(page.getByText("How can I help you practice English?")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Continue learning" })).toBeVisible();
 });
