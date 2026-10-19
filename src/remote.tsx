@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { LessonApp } from "./1-page/lesson";
-import "./style.css";
+import "./style.scss";
 
 function ensureStylesheet() {
   const id = "mfe-lesson-styles";
