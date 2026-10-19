@@ -2,7 +2,13 @@
   min-height: calc(100vh - 60px);
   padding: 64px 24px 80px;
   color: #0d0d0d;
-  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
 
 .lesson-intro,
@@ -41,14 +47,14 @@
   color: #737373;
   font-size: 11px;
   font-weight: 650;
-  letter-spacing: .08em;
+  letter-spacing: 0.08em;
 }
 
 .lesson-intro h1 {
   margin: 4px 0 5px;
   font-size: 30px;
   font-weight: 600;
-  letter-spacing: -.035em;
+  letter-spacing: -0.035em;
 }
 
 .lesson-intro span,
